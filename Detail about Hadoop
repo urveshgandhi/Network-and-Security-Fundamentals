@@ -1,0 +1,68 @@
+==========================================
+Cluster Administration
+==========================================
+
+-> Client is very important very quick enough
+-> if any files sits in RAM it's easily accessible (faster)
+-> if create a large file save to HDD will taketime
+-> when you resart your system RAM get flused away
+
+
+========================================================
+=> What happended if Namenode faild or crashed what to do?????
+========================================================
+
+-> hadoop 2.0  came in picture with zookeeper
+		hadoop fs - touchz /user/cloudera/.....
+		hapdoop fs -get source path/ destination path
+		hadoop fs -put source path/ destination path
+		
+		Edge node --> /home/ cloudera/
+		HDFC --> /user/cloudera/
+		
+		
+--> hadoop fs -text /user/cloudera/filename   (This command is use for shows the data in readable from )
+
+
+---> What is the differce between (cat) and (text) command in hadoop?
+		get --> from HDFS to edge node
+		text --> Deserilize the data and show it
+		
+		serializedata --> not readable data
+		
+		Hadoop fs -appendToFile source path destination path
+		
+		
+---> appendToFile  is to transfer the data not file
+
+
+====> overwrite the file
+
+		hadoop fs -put -f source path destination path
+		
+		
+====>  Issue in RDMS 
+		-> extremely slow data transmission
+		-> edge node burden
+		-> pr=ortion of data imports
+		-> incremantal data imports
+		-> modified data imports
+		-> serialized data imports
+		-> export the data
+		
+		
+========================================================
+Hadoop --- High Avaibility 
+
+Namenode --- Active Namenode (in_ise.lock)
+			you do not Edit logs with you
+			Recruited a new Guy- Give it to hime  -- (Journal Nodes)
+			
+SNN --	--- Stand by Name Nodee
+			As usual do your work but read Edit logs from Journal Nodes
+			wait for my instruction
+			
+DataNode --- DataNodes Connect with both the Namenode
+			 But send the information only to the Namenode having in_use.lock
+			 
+
